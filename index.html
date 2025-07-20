@@ -1,206 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Webder | Bespoke Websites Crafted for Visionaries</title>
-<link rel="stylesheet" href="styles.css">
-<style>
-  *, *::before, *::after {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  body {
-    background: #e0e7ff;
-    color: #1e3a8a;
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background: #1e3a8a;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 10%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 1000;
-  }
-  header h1 {
-    font-size: 2.2rem;
-    font-weight: 800;
-  }
-  nav {
-    display: flex;
-    gap: 35px;
-  }
-  nav a {
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-decoration: none;
-    position: relative;
-  }
-  nav a::after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: -6px;
-    width: 0%; height: 3px;
-    background: #3b82f6;
-    transition: width 0.3s ease;
-  }
-  nav a:hover::after {
-    width: 100%;
-  }
-  main {
-    flex: 1;
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
-  }
-  .hero {
-    background: linear-gradient(120deg, #2563eb, #3b82f6);
-    color: white;
-    border-radius: 18px;
-    padding: 60px 40px;
-    max-width: 1100px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: transform 0.4s;
-  }
-  .hero:hover {
-    transform: scale(1.02);
-  }
-  .hero h2 {
-    font-size: 3.8rem;
-    margin-bottom: 20px;
-    font-weight: 800;
-  }
-  .hero p {
-    font-size: 1.3rem;
-    max-width: 700px;
-    margin: 0 auto 25px;
-    line-height: 1.5;
-  }
-  .cta-button {
-    background: white;
-    color: #1e3a8a;
-    font-weight: 700;
-    padding: 16px 30px;
-    font-size: 1.2rem;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: background 0.3s, color 0.3s;
-    display: inline-block;
-    margin-top: 15px;
-  }
-  .cta-button:hover {
-    background: #1e3a8a;
-    color: white;
-  }
-  .section {
-    max-width: 1100px;
-    width: 100%;
-    margin-top: 60px;
-    text-align: center;
-    background: white;
-    padding: 50px 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  }
-  .section h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 25px;
-  }
-  .services {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .service {
-    background: #e0e7ff;
-    padding: 30px;
-    border-radius: 14px;
-    flex: 1 1 300px;
-    max-width: 350px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-  }
-  .service:hover {
-    transform: translateY(-10px);
-  }
-  .service h3 {
-    color: #1e3a8a;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-  }
-  .service p {
-    color: #334155;
-    font-size: 1.1rem;
-  }
-  footer {
-    background: #1e3a8a;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 1rem;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Webder | Bespoke Websites Crafted for Visionaries</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Webder crafts modern, clean, and fast websites designed to grow your business.">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      background: #1e40af;
+      color: white;
+      padding: 20px 10%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: opacity 0.4s ease;
+    }
+
+    header.fade {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    main {
+      padding: 120px 10% 60px;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      border-radius: 18px;
+      padding: 60px;
+      margin-bottom: 80px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .hero h2 {
+      font-size: 3.8rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 500px;
+    }
+
+    .hero img {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #1e3a8a;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      color: #334155;
+      text-align: center;
+    }
+
+    .features {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .feature-box {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      width: 280px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature-box h3 {
+      color: #1e40af;
+      margin-bottom: 15px;
+    }
+
+    .feature-box p {
+      font-size: 1rem;
+      color: #475569;
+    }
+
+    .pricing-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .pricing-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .pricing-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: #1d4ed8;
+    }
+
+    .pricing-card p {
+      font-size: 1rem;
+      color: #334155;
+      margin: 15px 0;
+    }
+
+    .pricing-card strong {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 10px;
+      color: #1e40af;
+    }
+
+    .cta {
+      background: #1e40af;
+      color: white;
+      padding: 60px 20px;
+      border-radius: 14px;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #3b82f6;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .cta a:hover {
+      background: #60a5fa;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 40px 10%;
+      font-size: 0.95rem;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .hero h2 {
+        font-size: 2.8rem;
+      }
+      .hero img {
+        margin-top: 30px;
+      }
+    }
+  </style>
+  <script>
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      if (window.scrollY > 150) {
+        header.classList.add("fade");
+      } else {
+        header.classList.remove("fade");
+      }
+    });
+  </script>
 </head>
 <body>
+
 <header>
   <h1>Webder</h1>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
+
 <main>
-  <section class="hero" id="home">
-    <h2>Powerful Websites<br> Sleek. Modern. Fast.</h2>
-    <p>At Webder, we create beautifully designed websites that don't just look great — they work flawlessly to help you grow.</p>
-    <a href="#contact" class="cta-button">Start Your Project</a>
+  <section class="hero">
+    <div>
+      <h2>Crafted Sites That Inspire</h2>
+      <p>We don’t just build websites — we shape first impressions. Bring your vision to life with designs that click and code that sticks.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Laptop screen with code" />
   </section>
-  <section class="section" id="about">
+
+  <section class="section about">
     <h2>About Webder</h2>
-    <p>Webder blends creativity and technical expertise to deliver high-performing, visually stunning websites. We go beyond the typical, crafting unique experiences that convert visitors into loyal customers.</p>
-  </section>
-  <section class="section" id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Custom Design</h3>
-        <p>Tailor-made designs built around your brand identity. No templates — just pure creativity and performance.</p>
+    <p>At Webder, we specialize in high-performance websites tailored for startups, creators, and bold businesses. We focus on usability, speed, and eye-catching design — without sacrificing function.</p>
+    <div class="features">
+      <div class="feature-box">
+        <h3>Speed Obsessed</h3>
+        <p>Blazing-fast performance with optimized assets and smart loading techniques.</p>
       </div>
-      <div class="service">
-        <h3>Conversion-Focused Pages</h3>
-        <p>Optimized landing and sales pages built to convert visitors into customers quickly and efficiently.</p>
+      <div class="feature-box">
+        <h3>Mobile-First</h3>
+        <p>Built to shine across devices — from the smallest phone to the largest display.</p>
       </div>
-      <div class="service">
-        <h3>Full Business Presence</h3>
-        <p>Complete websites with scalable features, interactivity, and professional polish for your business growth.</p>
+      <div class="feature-box">
+        <h3>Detail-Oriented</h3>
+        <p>From fonts to footers, every pixel is tuned for beauty and clarity.</p>
       </div>
     </div>
   </section>
+
+  <section class="section pricing">
+    <h2>Simple Pricing, Serious Results</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <strong>$150</strong>
+        <p>1-page responsive design<br />Basic animation<br />Delivered in 7 days</p>
+      </div>
+      <div class="pricing-card">
+        <h3>Business Suite</h3>
+        <strong>$300</strong>
+        <p>Up to 8 pages<br />Custom forms & SEO<br />Interactive layout</p>
+      </div>
+      <div class="pricing-card">
+        <h3>Signature</h3>
+        <strong>$400</strong>
+        <p>All Business features<br />Blog & CMS support<br />6 months of updates</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Let's Build Something Great</h2>
+    <p>Ready to elevate your online presence? Get a site that speaks your brand and performs on every level.</p>
+    <a href="contact.html">Start a Project</a>
+  </section>
 </main>
+
 <footer>
-  <p>&copy; 2025 Webder. Professional websites, redefined.</p>
-  <p>Email: skylotechboy@gmail.com | Phone: 442-359-7553</p>
+  <p>&copy; 2025 Webder. Handcrafted sites for the digital world.</p>
+  <p>📧 skylotechboy@gmail.com | 📞 442-359-7553</p>
 </footer>
+
 </body>
 </html>
