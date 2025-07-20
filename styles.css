@@ -58,6 +58,7 @@ nav a {
   font-weight: 600;
   font-size: 1rem;
   padding: 8px 10px;
+  color: #ffffff;
   border-radius: 6px;
 }
 nav a:hover,
