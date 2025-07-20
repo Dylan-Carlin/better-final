@@ -1,70 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Webder – Custom websites designed for bold brands. Modern, mobile-first, and SEO-optimized.">
-  <title>Webder | Bespoke Websites for Visionaries</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Webder | Bespoke Websites Crafted for Visionaries</title>
+<meta name="description" content="Webder crafts modern, clean, and fast websites designed to grow your business.">
+<style>
+  /* Reset */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    background: #e0e7ff;
+    color: #1e3a8a;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #3b82f6;
+    outline: none;
+  }
+  header {
+    background: #1e3a8a;
+    color: white;
+    padding: 20px 10%;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    transition: opacity 0.5s ease;
+  }
+  header.fade {
+    opacity: 0;
+    pointer-events: none;
+  }
+  header h1 {
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  nav {
+    display: flex;
+    gap: 30px;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 10px;
+    border-radius: 6px;
+  }
+  nav a:hover, nav a:focus {
+    background: #2563eb;
+    color: white;
+  }
+  main {
+    padding: 120px 10% 60px; /* padding top accounts for fixed header */
+  }
+  .hero {
+    background: linear-gradient(120deg, #2563eb, #3b82f6);
+    color: white;
+    padding: 50px 40px;
+    border-radius: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+  }
+  .hero-text {
+    flex: 1 1 350px;
+  }
+  .hero-text h2 {
+    font-size: 3.6rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+  .hero-text p {
+    font-size: 1.3rem;
+    max-width: 500px;
+    line-height: 1.4;
+  }
+  .hero img {
+    flex: 1 1 400px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    animation: float 6s ease-in-out infinite;
+    max-height: 350px;
+    object-fit: cover;
+  }
+  @keyframes float {
+    0%,100% {transform: translateY(0);}
+    50% {transform: translateY(-15px);}
+  }
+
+  .section {
+    margin-top: 60px;
+    padding: 0;
+  }
+
+  .section h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  /* Services section improvements */
+
+  .services-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+
+  .service-card {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 14px;
+    width: 280px;
+    box-shadow: 0 6px 15px rgba(30, 58, 138, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  .service-card:hover, .service-card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(30, 58, 138, 0.25);
+  }
+  .service-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #1e3a8a;
+  }
+  .service-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #334155;
+  }
+
+  /* Footer */
+  footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 30px 10%;
+    font-size: 1rem;
+  }
+
+  /* Responsive */
+
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .hero-text h2 {
+      font-size: 2.8rem;
+    }
+    .hero img {
+      max-height: 280px;
+    }
+    .services-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.6rem;
+    }
+    nav a {
+      font-size: 0.9rem;
+      padding: 6px 8px;
+    }
+    .hero-text h2 {
+      font-size: 2.4rem;
+    }
+    .service-card {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+</style>
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if(window.scrollY > 150){
+      header.classList.add('fade');
+    } else {
+      header.classList.remove('fade');
+    }
+  });
+</script>
 </head>
 <body>
-  <header>
-    <h1>Webder</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <section class="hero">
+<header>
+  <h1>Webder</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Main Introduction">
     <div class="hero-text">
-      <h2>Modern Websites<br /> Tailored for Growth</h2>
+      <h2>Modern Websites<br> Tailored for Growth</h2>
       <p>
-        Webder blends clean aesthetics with smooth performance, creating sites
-        that captivate and convert. Let your business shine online with an
-        experience your customers will love.
+        Webder blends clean aesthetics with smooth performance, creating sites that captivate and convert.  
+        Let your business shine online with an experience your customers will love.
       </p>
-      <a href="services.html" class="cta-button">Explore Services</a>
     </div>
-    <img
-      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-      alt="Creative Workspace"
-    />
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Creative workspace with laptops and code on screens" />
   </section>
 
-  <section class="section" id="mission">
-    <h3>Why Webder?</h3>
-    <p>
-      In a sea of generic templates and bloated code, Webder stands out by focusing
-      on fast, elegant, conversion-optimized sites tailored to each client’s unique needs.
-      Whether you're a small startup or a growing brand, we offer the tools and design firepower
-      to elevate your online presence.
+  <section class="section" aria-label="About Webder">
+    <h2>About Webder</h2>
+    <p style="max-width: 700px; margin: 0 auto 20px; font-size:1.15rem; color: #334155;">
+      Webder creates websites that balance beauty, usability, and speed. Inspired by brands that value detail, every project we take on focuses on performance-driven design, clean layouts, and immersive visuals. Your website won’t just exist — it will inspire.
     </p>
   </section>
 
-  <section class="section highlights">
-    <h3>What Sets Us Apart</h3>
-    <ul>
-      <li><strong>Performance-first builds</strong> that load in under 2 seconds.</li>
-      <li><strong>Custom code and design</strong> — no cookie-cutter templates.</li>
-      <li><strong>SEO-ready structure</strong> and Core Web Vitals optimization.</li>
-      <li><strong>Mobile-first design</strong> that feels intuitive on all screens.</li>
-      <li><strong>Scalable systems</strong> from single-page sites to CMS solutions.</li>
-    </ul>
+  <section class="section" aria-label="Services Overview">
+    <h2>What We Offer</h2>
+    <div class="services-container">
+      <article class="service-card" tabindex="0">
+        <h3>Custom Design</h3>
+        <p>Fresh layouts designed uniquely for your business identity — no templates here.</p>
+      </article>
+      <article class="service-card" tabindex="0">
+        <h3>Landing & Sales Pages</h3>
+        <p>Built to maximize engagement and boost conversions with clean UI and clear calls-to-action.</p>
+      </article>
+      <article class="service-card" tabindex="0">
+        <h3>Business Presence</h3>
+        <p>Full corporate sites with interactive elements and scalable architecture tailored to your needs.</p>
+      </article>
+    </div>
   </section>
+</main>
 
-  <section class="section cta-banner">
-    <h3>Start Building Something Bold</h3>
-    <p>Explore our services and discover how Webder can elevate your digital presence.</p>
-    <a href="contact.html" class="cta-button">Request a Consultation</a>
-  </section>
+<footer>
+  <p>&copy; 2025 Webder. Precision-crafted websites for the modern era.</p>
+  <p>Email: skylotechboy@gmail.com | Phone: 442-359-7553</p>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 Webder | Crafted for the modern era<br />
-      Email: skylotechboy@gmail.com | Phone: 442-359-7553
-    </p>
-  </footer>
 </body>
 </html>
