@@ -18,7 +18,7 @@
     min-height: 100vh;
   }
   a {
-    color: #2563eb;
+    color: #93c5fd; /* lighter blue for better readability */
     text-decoration: none;
     transition: color 0.3s ease;
   }
@@ -56,6 +56,7 @@
     font-size: 1rem;
     padding: 8px 10px;
     border-radius: 6px;
+    color: #93c5fd;
   }
   nav a:hover, nav a:focus {
     background: #2563eb;
@@ -71,12 +72,15 @@
     font-weight: 700;
     margin-bottom: 40px;
     text-align: center;
+    color: #1e3a8a;
   }
   .tiers {
     display: flex;
     gap: 20px;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    max-width: 1000px;
+    margin: 0 auto;
   }
   .tier {
     background: white;
@@ -86,12 +90,13 @@
     width: 320px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: default;
+    overflow: hidden;
   }
   .tier:hover, .tier:focus-within {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(30, 58, 138, 0.3);
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 16px 40px rgba(30, 58, 138, 0.4);
   }
   .tier h3 {
     font-size: 1.8rem;
@@ -110,6 +115,13 @@
     padding-left: 0;
     color: #334155;
     margin-bottom: 1rem;
+    transition: max-height 0.4s ease;
+    max-height: 100px;
+    overflow: hidden;
+  }
+  .tier:hover ul,
+  .tier:focus-within ul {
+    max-height: 300px; /* expands on hover/focus */
   }
   .tier ul li {
     margin-bottom: 12px;
@@ -138,22 +150,11 @@
   .tier.premium ul li {
     color: #3b0a45;
   }
-  /* Footer */
-  footer {
-    background: #1e3a8a;
-    color: white;
-    text-align: center;
-    padding: 30px 10%;
-    font-size: 1rem;
-  }
   /* Responsive */
   @media (max-width: 900px) {
     .tiers {
-      flex-direction: column;
-      align-items: center;
-    }
-    main {
-      padding: 120px 5% 60px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
   @media (max-width: 480px) {
@@ -167,6 +168,7 @@
     .tier {
       width: 100%;
       max-width: 350px;
+      margin-bottom: 20px;
     }
   }
 </style>
